@@ -1,0 +1,97 @@
+#mainContentBox{
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    background: rgba(142, 214, 255, 0.468);
+    outline: 1px solid black;
+
+    #logoPokemonBox{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img{
+            width: 30%;
+        }
+    }
+
+    #pokemonsListBox{
+        padding-top: 2em;
+        padding-bottom: 2em;
+        display: flex;
+        justify-content: space-evenly;
+        gap: 4em;
+        flex-wrap: wrap;
+        width: 90%;
+        height: fit-content;
+
+        .capsulePokemonProfil{
+        padding: 0.7em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        outline: 2px solid black;
+        box-shadow: 5px 5px 10px 1px black;
+        border-radius: 100%;
+        width: 10em;
+        height: 10em;
+        transition: 0.3s;
+
+        &:hover{
+            cursor: pointer;
+            transform: scale(1.1);
+            box-shadow: 5px 5px 20px 3px black;
+            img{
+                width: 90%;
+            }
+        }
+        img{
+            border-radius: 100%;
+            width: 70%;
+            border-radius: 100%;
+            transition: 0.3s;
+        }
+        }
+    }
+    
+}
+
+
+$TypesCouleurs : (
+    Feu: rgba(255, 98, 0, 0.564),
+    Plante: rgba(6, 249, 1, 0.449),
+    Eau: rgba(0, 123, 255, 0.517),
+    Normal: rgba(187, 187, 187, 0.923),
+    Poison: rgba(182, 27, 213, 0.527),
+    Vol: rgba(170, 152, 240, 0.802),
+    Insecte: rgba(149, 163, 0, 0.786),
+    Électrik: rgba(255, 225, 0, 0.651),
+    Sol: rgba(203, 152, 71, 0.919),
+    Psy: rgba(247, 74, 103, 0.778),
+    Fée: rgb(246, 183, 193),
+    Combat: rgba(211, 39, 5, 0.729),
+    Roche: rgb(193, 186, 109),
+    Glace: rgba(125, 222, 248, 0.818),
+    Spectre: rgba(172, 108, 255, 0.696),
+    Dragon: rgba(137, 53, 247, 0.696),
+    Ténèbres: rgb(101, 67, 67),
+    Acier: rgb(165, 182, 215),
+);
+
+@each $type, $couleur in $TypesCouleurs{
+    .#{$type}{
+        background-color: $couleur;
+    }
+}
+
+@each $type1, $couleur1 in $TypesCouleurs{
+    @each $type2, $couleur2 in $TypesCouleurs{
+        .#{$type1}#{$type2}{
+            background: linear-gradient(to bottom right, $couleur1 49%, $couleur2 51%);
+        }
+    }
+}
